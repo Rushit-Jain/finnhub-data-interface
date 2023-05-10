@@ -16,11 +16,16 @@
   <body>
     <div id="div-form">
       <h1>Stock Search</h1>
-      <form id="form">
-        <label for="stock">Stock Ticker Symbol:</label>
-        <input type="text" id="stock" name="stock" required />
-        <input type="button" value="Search" />
-        <input type="button" value="Clear" />
+      <form id="form" onsubmit="onFormSubmit(event)" onreset="">
+        <label for="input-text">Stock Ticker Symbol:</label>
+        <input id="input-text" type="text" name="stock" required />
+        <input id="button-submit" type="submit" value="Search" />
+        <input
+          id="button-clear"
+          type="button"
+          onclick="onFormReset(event)"
+          value="Clear"
+        />
       </form>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

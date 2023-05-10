@@ -31,16 +31,18 @@ form {
 label {
   margin-bottom: 10px;
   font-weight: bold;
+  color: white;
 }
 
-input[type="text"] {
+#input-text {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
 
-input[type="button"] {
+#button-submit,
+#button-clear {
   padding: 10px 20px;
   margin-bottom: 10px;
   background-color: #ffa500;
@@ -49,18 +51,14 @@ input[type="button"] {
   cursor: pointer;
 }
 
-input[type="button"]:hover {
+#button-submit:hover {
   background-color: #ff8c00;
 }
 
-input[type="button"]:last-child {
+#button-clear {
   background-color: #6c757d;
 }
 
-input[type="button"]:last-child:hover {
+#button-clear:hover {
   background-color: #4e555b;
-}
-
-label {
-  color: white;
 }
