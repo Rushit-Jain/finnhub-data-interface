@@ -62,3 +62,20 @@ label {
 #button-clear:hover {
   background-color: #4e555b;
 }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link.active:focus,
+.nav-tabs .nav-link.active:hover {
+  background-color: orange;
+  color: white;
+}
+
+.nav-tabs .nav-link {
+  background-color: lightgray;
+  color: gray;
+  margin-right: 15px;
+}
+
+.div-form {
+  margin-bottom: 30px;
+}
