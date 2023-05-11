@@ -4,13 +4,14 @@ function get(id) {
 
 function readFormData() {
   let formData = {};
-  formData["name"] = get("input-text").value.toUpperCase();
+  formData["symbol"] = get("input-text").value.toUpperCase();
   return formData;
 }
 
 function onFormSubmit(event) {
   event.preventDefault();
   let formData = readFormData();
+  fetchCompanyData(formData);
 }
 
 function onFormReset(event) {
