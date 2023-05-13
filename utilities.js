@@ -18,3 +18,23 @@ exports.cleanCompanyInfo = (companyInfo) => {
   else cleanedCompanyInfo.category = "";
   return cleanedCompanyInfo;
 };
+
+exports.cleanStockSummary = (stockSummary) => {
+  if (stockSummary == null) return null;
+  let cleanedStockSummary = {};
+  if (stockSummary.d != null) cleanedStockSummary.d = stockSummary.d;
+  else cleanedStockSummary.d = "";
+  if (stockSummary.dp != null) cleanedStockSummary.dp = stockSummary.dp;
+  else cleanedStockSummary.dp = "";
+  if (stockSummary.h != null) cleanedStockSummary.h = stockSummary.h;
+  else cleanedStockSummary.h = "";
+  if (stockSummary.l != null) cleanedStockSummary.l = stockSummary.l;
+  else cleanedStockSummary.l = "";
+  if (stockSummary.o != null) cleanedStockSummary.o = stockSummary.o;
+  else cleanedStockSummary.o = "";
+  if (stockSummary.pc != null) cleanedStockSummary.pc = stockSummary.pc;
+  else cleanedStockSummary.pc = "";
+  if (stockSummary.t != null) cleanedStockSummary.t = stockSummary.t;
+  else cleanedStockSummary.t = "";
+  return cleanedStockSummary;
+};

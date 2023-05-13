@@ -17,3 +17,18 @@ exports.getCompanyInformation = (req, res, next) => {
     })
     .catch((error) => console.log(error));
 };
+
+exports.getStockSummary = (req, res, next) => {
+  let URL = "https://finnhub.io/api/v1/quote";
+  let params = {
+    symbol: req.query.symbol,
+    token: constants.API_KEY,
+  };
+  axios
+    .get(URL, { params })
+    .then((response) => {
+      let cleanedResponse = utilities.cleanStockSummary(response.data);
+      res.json(cleanedResponse);
+    })
+    .catch((error) => console.log(error));
+};
