@@ -43,3 +43,21 @@ exports.getStockSummary = (req, res, next) => {
     })
     .catch((error) => console.log(error));
 };
+
+exports.getCompanyNews = (req, res, next) => {
+  let URL = "https://finnhub.io/api/v1/company-news";
+  ("?symbol=TSLA&from=BEFORE_30&to=TODAY");
+  let params = {
+    symbol: req.query.symbol,
+    from: utilities.getNewsDate("from"),
+    to: utilities.getNewsDate("to"),
+    token: constants.API_KEY,
+  };
+  axios
+    .get(URL, { params })
+    .then((response) => {
+      let cleanedResponse = utilities.cleanCompanyNews(response.data);
+      res.json(cleanedResponse);
+    })
+    .catch((error) => console.log(error));
+};

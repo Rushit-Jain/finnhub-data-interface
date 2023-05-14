@@ -69,3 +69,35 @@ exports.cleanRecommendationResponse = (recommendationResponse) => {
   else cleanedRecommendationResponse.strongSell = "";
   return cleanedRecommendationResponse;
 };
+
+exports.getNewsDate = (dateType) => {
+  let today = new Date();
+  if (dateType === "from") today.setDate(today.getDate() - 30);
+  let newsDate = today.toISOString().split("T")[0];
+  return newsDate;
+};
+
+exports.cleanCompanyNews = (companyNews) => {
+  let cleanedCompanyNews = [];
+  for (let i = 0; i < companyNews.length; i++) {
+    if (cleanedCompanyNews.length >= 5) break;
+    let currentNewsItem = companyNews[i];
+    console.log(currentNewsItem);
+    if (currentNewsItem.image == null || currentNewsItem.image.length === 0)
+      continue;
+    if (currentNewsItem.url == null || currentNewsItem.url.length === 0)
+      continue;
+    if (
+      currentNewsItem.headline == null ||
+      currentNewsItem.headline.length === 0
+    )
+      continue;
+    if (
+      currentNewsItem.datetime == null ||
+      currentNewsItem.datetime.length === 0
+    )
+      continue;
+    cleanedCompanyNews.push(currentNewsItem);
+  }
+  return cleanedCompanyNews;
+};

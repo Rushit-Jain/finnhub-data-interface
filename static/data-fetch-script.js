@@ -11,3 +11,10 @@ function fetchStockData(params) {
     .then((response) => dataStore.set("stockSummary", response.data))
     .catch((error) => console.log(error));
 }
+
+function fetchCompanyNews(params) {
+  axios
+    .get(baseURL + "/company-news", { params })
+    .then((response) => dataStore.set("companyNews", response.data))
+    .catch((error) => console.log(error));
+}

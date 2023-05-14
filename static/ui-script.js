@@ -13,6 +13,7 @@ function onFormSubmit(event) {
   let formData = readFormData();
   fetchCompanyData(formData);
   fetchStockData(formData);
+  fetchCompanyNews(formData);
   console.log(dataStore.data);
 }
 
