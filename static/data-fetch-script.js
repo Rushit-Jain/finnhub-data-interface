@@ -15,6 +15,9 @@ function fetchStockData(params) {
 function fetchCompanyNews(params) {
   axios
     .get(baseURL + "/company-news", { params })
-    .then((response) => dataStore.set("companyNews", response.data))
+    .then((response) => {
+      dataStore.set("companyNews", response.data);
+      renderCompanyNews();
+    })
     .catch((error) => console.log(error));
 }

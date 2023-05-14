@@ -79,3 +79,14 @@ label {
 .div-form {
   margin-bottom: 30px;
 }
+
+.news-item {
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.news-image {
+  display: flex;
+}

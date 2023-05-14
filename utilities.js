@@ -77,6 +77,28 @@ exports.getNewsDate = (dateType) => {
   return newsDate;
 };
 
+exports.epochToDateTime = (epoch) => {
+  let date = new Date(epoch * 1000);
+  let year = date.getFullYear();
+  let month = date.getMonth();
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let day = date.getDate();
+  return `${day} ${months[month]}, ${year}`;
+};
+
 exports.cleanCompanyNews = (companyNews) => {
   let cleanedCompanyNews = [];
   for (let i = 0; i < companyNews.length; i++) {
@@ -98,6 +120,11 @@ exports.cleanCompanyNews = (companyNews) => {
     )
       continue;
     cleanedCompanyNews.push(currentNewsItem);
+  }
+  for (let i = 0; i < cleanedCompanyNews.length; i++) {
+    cleanedCompanyNews[i].datetime = this.epochToDateTime(
+      cleanedCompanyNews[i].datetime
+    );
   }
   return cleanedCompanyNews;
 };
