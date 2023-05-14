@@ -27,8 +27,19 @@ exports.getStockSummary = (req, res, next) => {
   axios
     .get(URL, { params })
     .then((response) => {
-      let cleanedResponse = utilities.cleanStockSummary(response.data);
-      res.json(cleanedResponse);
+      let recommendationURL = "https://finnhub.io/api/v1/stock/recommendation";
+      axios
+        .get(recommendationURL, { params })
+        .then((recommendationResponse) => {
+          let sortedRecommendationResponse =
+            utilities.sortRecommendationResponse(recommendationResponse.data);
+          let cleanedRecommendationResponse =
+            utilities.cleanRecommendationResponse(sortedRecommendationResponse);
+          let cleanedResponse = utilities.cleanStockSummary(response.data);
+          cleanedResponse.recommendation = cleanedRecommendationResponse;
+          res.json(cleanedResponse);
+        })
+        .catch((error) => console.log(error));
     })
     .catch((error) => console.log(error));
 };

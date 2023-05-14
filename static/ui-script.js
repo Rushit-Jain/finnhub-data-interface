@@ -12,6 +12,8 @@ function onFormSubmit(event) {
   event.preventDefault();
   let formData = readFormData();
   fetchCompanyData(formData);
+  fetchStockData(formData);
+  console.log(dataStore.data);
 }
 
 function onFormReset(event) {

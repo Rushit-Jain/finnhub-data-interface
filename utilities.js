@@ -38,3 +38,34 @@ exports.cleanStockSummary = (stockSummary) => {
   else cleanedStockSummary.t = "";
   return cleanedStockSummary;
 };
+
+exports.sortRecommendationResponse = (recommendationResponse) => {
+  recommendationResponse.sort((a, b) => {
+    return a.period - b.period;
+  });
+  return recommendationResponse;
+};
+
+exports.cleanRecommendationResponse = (recommendationResponse) => {
+  let recommendationConsideration =
+    recommendationResponse[recommendationResponse.length - 1];
+  let cleanedRecommendationResponse = {};
+  if (recommendationConsideration.buy != null)
+    cleanedRecommendationResponse.buy = recommendationConsideration.buy;
+  else cleanedRecommendationResponse.buy = "";
+  if (recommendationConsideration.hold != null)
+    cleanedRecommendationResponse.hold = recommendationConsideration.hold;
+  else cleanedRecommendationResponse.hold = "";
+  if (recommendationConsideration.sell != null)
+    cleanedRecommendationResponse.sell = recommendationConsideration.sell;
+  else cleanedRecommendationResponse.sell = "";
+  if (recommendationConsideration.strongBuy != null)
+    cleanedRecommendationResponse.strongBuy =
+      recommendationConsideration.strongBuy;
+  else cleanedRecommendationResponse.strongBuy = "";
+  if (recommendationConsideration.strongSell != null)
+    cleanedRecommendationResponse.strongSell =
+      recommendationConsideration.strongSell;
+  else cleanedRecommendationResponse.strongSell = "";
+  return cleanedRecommendationResponse;
+};
