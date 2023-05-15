@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url(./res/background.png);
+  background: url(./res/background.jpg);
   background-size: cover;
   background-attachment: fixed;
   padding: 20px;
@@ -89,4 +89,8 @@ label {
 
 .news-image {
   display: flex;
+}
+
+.company-info-table {
+  color: white;
 }

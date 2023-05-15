@@ -1,7 +1,10 @@
 function fetchCompanyData(params) {
   axios
     .get(baseURL + "/company-info", { params })
-    .then((response) => dataStore.set("companyInfo", response.data))
+    .then((response) => {
+      dataStore.set("companyInfo", response.data);
+      renderCompanyInfo();
+    })
     .catch((error) => console.log(error));
 }
 

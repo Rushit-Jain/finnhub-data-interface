@@ -104,7 +104,6 @@ exports.cleanCompanyNews = (companyNews) => {
   for (let i = 0; i < companyNews.length; i++) {
     if (cleanedCompanyNews.length >= 5) break;
     let currentNewsItem = companyNews[i];
-    console.log(currentNewsItem);
     if (currentNewsItem.image == null || currentNewsItem.image.length === 0)
       continue;
     if (currentNewsItem.url == null || currentNewsItem.url.length === 0)
