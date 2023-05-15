@@ -78,3 +78,53 @@ function renderCompanyInfo() {
   `;
   get("tab1").innerHTML = html;
 }
+
+function renderStockSummary() {
+  let stockInfo = dataStore.get("stockSummary");
+  let dText =
+    stockInfo.d > 0
+      ? "<span class='green-up-arrow'>&#x25B2;</span>"
+      : "<span class='red-down-arrow'>&#x25BC;</span>";
+  let html = `
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-md-6">
+        <table class="table stock-info-table">
+          <tbody>
+            <tr>
+              <th scope="row">Stock Ticker Symbol</th>
+              <td>${stockInfo.ticker}</td>
+            </tr>
+            <tr>
+              <th scope="row">Trading Day</th>
+              <td>${stockInfo.t}</td>
+            </tr>
+            <tr>
+              <th scope="row">Previous Closing Price</th>
+              <td>${stockInfo.pc}</td>
+            </tr>
+            <tr>
+              <th scope="row">Opening Price</th>
+              <td>${stockInfo.o}</td>
+            </tr>
+            <tr>
+              <th scope="row">High Price</th>
+              <td>${stockInfo.h}</td>
+            </tr>
+            <tr>
+              <th scope="row">Low Price</th>
+              <td>${stockInfo.l}</td>
+            </tr>
+            <tr>
+              <th scope="row">Change</th>
+              <td>${stockInfo.d + " " + dText}</td>
+            </tr>
+            <tr>
+              <th scope="row">Change Percent</th>
+              <td>${stockInfo.dp + " " + dText}</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  `;
+  get("tab2").innerHTML = html;
+}

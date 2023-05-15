@@ -81,7 +81,7 @@ label {
 }
 
 .news-item {
-  background-color: #000;
+  background-color: darkorange;
   color: #fff;
   margin-bottom: 25px;
   padding: 10px;
@@ -93,4 +93,16 @@ label {
 
 .company-info-table {
   color: white;
+}
+
+.stock-info-table {
+  color: white;
+}
+
+.green-up-arrow {
+  color: green;
+}
+
+.red-down-arrow {
+  color: red;
 }

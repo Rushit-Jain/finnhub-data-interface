@@ -37,6 +37,7 @@ exports.getStockSummary = (req, res, next) => {
             utilities.cleanRecommendationResponse(sortedRecommendationResponse);
           let cleanedResponse = utilities.cleanStockSummary(response.data);
           cleanedResponse.recommendation = cleanedRecommendationResponse;
+          cleanedResponse.ticker = req.query.symbol;
           res.json(cleanedResponse);
         })
         .catch((error) => console.log(error));

@@ -11,7 +11,10 @@ function fetchCompanyData(params) {
 function fetchStockData(params) {
   axios
     .get(baseURL + "/stock-summary", { params })
-    .then((response) => dataStore.set("stockSummary", response.data))
+    .then((response) => {
+      dataStore.set("stockSummary", response.data);
+      renderStockSummary();
+    })
     .catch((error) => console.log(error));
 }
 
