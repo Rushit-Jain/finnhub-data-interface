@@ -123,6 +123,26 @@ function renderStockSummary() {
               <td>${stockInfo.dp + " " + dText}</td>
             </tr>
         </table>
+        <div class="div-recommendation">
+          <span class="span-recommendation red-cube">${
+            stockInfo.recommendation.strongSell
+          }</span>
+          <span class="span-recommendation brown-cube">${
+            stockInfo.recommendation.sell
+          }</span>
+          <span class="span-recommendation olive-cube">${
+            stockInfo.recommendation.hold
+          }</span>
+          <span class="span-recommendation dark-green-cube">${
+            stockInfo.recommendation.buy
+          }</span>
+          <span class="span-recommendation light-green-cube">${
+            stockInfo.recommendation.strongBuy
+          }</span>
+        </div>
+        <div class="div-recommendation-heading">
+          <h5>Recommendation Trends</h5>
+        </div>
       </div>
     </div>
   `;
