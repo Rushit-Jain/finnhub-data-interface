@@ -14,6 +14,7 @@ function onFormSubmit(event) {
   fetchCompanyData(formData);
   fetchStockData(formData);
   fetchCompanyNews(formData);
+  fetchChartData(formData);
   console.log(dataStore.data);
 }
 

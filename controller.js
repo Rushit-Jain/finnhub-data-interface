@@ -45,6 +45,24 @@ exports.getStockSummary = (req, res, next) => {
     .catch((error) => console.log(error));
 };
 
+exports.getChartData = (req, res, next) => {
+  let URL = "https://finnhub.io/api/v1/stock/candle";
+  // "?symbol=TSLA&resolution=D&from=6_MONTHS_1_DAY&to=TODAY&token=API_KEY"
+  let params = {
+    symbol: req.query.symbol,
+    from: utilities.getSixMonthsOneDayAgo(new Date()),
+    to: new Date().getTime(),
+    token: constants.API_KEY,
+  };
+  axios
+    .get(URL, { params })
+    .then((response) => {
+      let cleanedResponse = utilities.cleanChartData(response.data);
+      res.json(cleanedResponse);
+    })
+    .catch((error) => console.log(error));
+};
+
 exports.getCompanyNews = (req, res, next) => {
   let URL = "https://finnhub.io/api/v1/company-news";
   ("?symbol=TSLA&from=BEFORE_30&to=TODAY");

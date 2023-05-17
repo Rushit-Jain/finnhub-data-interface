@@ -27,3 +27,13 @@ function fetchCompanyNews(params) {
     })
     .catch((error) => console.log(error));
 }
+
+function fetchChartData(params) {
+  axios
+    .get(baseURL + "/chart-data", { params })
+    .then((response) => {
+      dataStore.set("chartData", response.data);
+      renderChart();
+    })
+    .catch((error) => console.log(error));
+}

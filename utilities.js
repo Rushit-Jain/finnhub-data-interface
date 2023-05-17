@@ -127,3 +127,16 @@ exports.cleanCompanyNews = (companyNews) => {
   }
   return cleanedCompanyNews;
 };
+
+exports.getSixMonthsOneDayAgo = (today) => {
+  let sixMonthsAgo = new Date();
+  sixMonthsAgo.setMonth(today.getMonth() - 6);
+  let sixMonthsOneDayAgo = new Date(sixMonthsAgo);
+  sixMonthsOneDayAgo.setDate(sixMonthsOneDayAgo.getDate() - 1);
+  return sixMonthsOneDayAgo.getTime();
+};
+
+exports.cleanChartData = (chartData) => {
+  let cleanedChartData = chartData;
+  return cleanedChartData;
+};
