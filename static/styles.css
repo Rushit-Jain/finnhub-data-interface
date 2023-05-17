@@ -70,10 +70,23 @@ label {
   color: white;
 }
 
+.nav {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.div-nav {
+  margin-top: 20px;
+}
+
 .nav-tabs .nav-link {
-  background-color: lightgray;
+  background-color: white;
   color: gray;
   margin-right: 15px;
+}
+
+.tab-content {
+  margin-top: 20px;
 }
 
 .div-form {
@@ -81,8 +94,8 @@ label {
 }
 
 .news-item {
-  background-color: darkorange;
-  color: #fff;
+  background-color: white;
+  color: black;
   margin-bottom: 25px;
   padding: 10px;
 }
@@ -147,4 +160,14 @@ label {
   color: white;
   text-align: center;
   margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+  .nav-tabs .nav-link {
+    margin-right: 0;
+  }
 }
