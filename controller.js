@@ -47,12 +47,12 @@ exports.getStockSummary = (req, res, next) => {
 
 exports.getChartData = (req, res, next) => {
   let URL = "https://finnhub.io/api/v1/stock/candle";
-  // "?symbol=TSLA&resolution=D&from=6_MONTHS_1_DAY&to=TODAY&token=API_KEY"
   let params = {
     symbol: req.query.symbol,
-    from: utilities.getSixMonthsOneDayAgo(new Date()),
-    to: new Date().getTime(),
+    from: Math.floor(utilities.getSixMonthsOneDayAgo(new Date()) / 1000),
+    to: Math.floor(new Date().getTime() / 1000),
     token: constants.API_KEY,
+    resolution: "D",
   };
   axios
     .get(URL, { params })

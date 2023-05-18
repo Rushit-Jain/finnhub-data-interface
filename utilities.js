@@ -137,6 +137,17 @@ exports.getSixMonthsOneDayAgo = (today) => {
 };
 
 exports.cleanChartData = (chartData) => {
-  let cleanedChartData = chartData;
+  let cleanedChartData = {};
+  let t = chartData.t;
+  cleanedChartData.date = [];
+  for (let i = 0; i < t.length; i++) {
+    let utcTime = new Date(t[i] * 1000).toUTCString();
+    cleanedChartData.date.push(utcTime);
+  }
+  cleanedChartData.stockPrice = chartData.c;
+  cleanedChartData.volume = chartData.v;
+  console.log("T LENGTH: ", cleanedChartData.date.length);
+  console.log("C LENGTH: ", cleanedChartData.stockPrice.length);
+  console.log("V LENGTH: ", cleanedChartData.volume.length);
   return cleanedChartData;
 };
