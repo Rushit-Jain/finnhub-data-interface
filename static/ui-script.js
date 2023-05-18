@@ -80,6 +80,133 @@ function renderCompanyInfo() {
   get("tab1").innerHTML = html;
 }
 
+function renderChart(dataSets) {
+  let chartData = dataStore.get("chartData");
+  var categories = chartData.date.map((item) =>
+    item.substring(5, item.length - 13)
+  );
+  console.log(categories);
+  const chart = Highcharts.stockChart("div-chart", {
+    rangeSelector: {
+      selected: 2,
+    },
+    chart: {
+      type: "column",
+    },
+
+    tooltip: {
+      shared: true,
+    },
+
+    title: {
+      text: dataStore.get("companyInfo").ticker + " Stock Price",
+    },
+
+    subtitle: {
+      text: '<a href="https://finnhub.io/" target="_blank">Source: Finnhub</a>',
+      useHTML: true,
+    },
+
+    // rangeSelector: {
+    //   enabled: true,
+    //   buttons: [
+    //     {
+    //       type: "day",
+    //       count: 7,
+    //       text: "7d",
+    //     },
+    //     {
+    //       type: "day",
+    //       count: 15,
+    //       text: "15d",
+    //     },
+    //     {
+    //       type: "month",
+    //       count: 1,
+    //       text: "1m",
+    //     },
+    //     {
+    //       type: "month",
+    //       count: 3,
+    //       text: "3m",
+    //     },
+    //     {
+    //       type: "month",
+    //       count: 6,
+    //       text: "6m",
+    //     },
+    //   ],
+    //   selected: 4,
+    //   inputEnabled: true,
+    // },
+
+    xAxis: {
+      categories: categories,
+    },
+
+    yAxis: [
+      {
+        title: { text: "Volume" },
+        labels: { align: "left" }, // align text of label from left side
+        min: 0,
+        // offset: 1  // move Volume yAxis out of plot area, need to be dismissed with label align left
+      },
+      {
+        title: { text: "Stock Price" },
+        opposite: false,
+        min: 0,
+      },
+    ],
+
+    plotOptions: {
+      column: {
+        pointWidth: 2,
+        color: "#404040",
+      },
+    },
+
+    series: [
+      {
+        name: "Stock Price",
+        type: "area",
+        data: dataSets[0],
+        tooltip: {
+          valueDecimals: 2,
+        },
+        yAxis: 1,
+        showInNavigator: true,
+        fillColor: {
+          linearGradient: {
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 1,
+          },
+          stops: [
+            [0, Highcharts.getOptions().colors[0]],
+            [
+              1,
+              Highcharts.color(Highcharts.getOptions().colors[0])
+                .setOpacity(0)
+                .get("rgba"),
+            ],
+          ],
+        },
+      },
+      {
+        name: "Volume",
+        type: "column",
+        showInNavigator: false,
+        data: dataSets[1],
+        tooltip: {
+          valueDecimals: 2,
+        },
+        yAxis: 0,
+      },
+    ],
+  });
+}
+
 function renderStockSummary() {
   let stockInfo = dataStore.get("stockSummary");
   let dText =

@@ -146,8 +146,5 @@ exports.cleanChartData = (chartData) => {
   }
   cleanedChartData.stockPrice = chartData.c;
   cleanedChartData.volume = chartData.v;
-  console.log("T LENGTH: ", cleanedChartData.date.length);
-  console.log("C LENGTH: ", cleanedChartData.stockPrice.length);
-  console.log("V LENGTH: ", cleanedChartData.volume.length);
   return cleanedChartData;
 };

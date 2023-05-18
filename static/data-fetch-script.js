@@ -33,7 +33,8 @@ function fetchChartData(params) {
     .get(baseURL + "/chart-data", { params })
     .then((response) => {
       dataStore.set("chartData", response.data);
-      renderChart();
+      let dataSets = processData();
+      renderChart(dataSets);
     })
     .catch((error) => console.log(error));
 }
