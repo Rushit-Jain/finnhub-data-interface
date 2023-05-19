@@ -88,7 +88,7 @@ function renderChart(dataSets) {
   console.log(categories);
   const chart = Highcharts.stockChart("div-chart", {
     rangeSelector: {
-      selected: 2,
+      enabled: false,
     },
     chart: {
       type: "column",
@@ -107,49 +107,31 @@ function renderChart(dataSets) {
       useHTML: true,
     },
 
-    // rangeSelector: {
-    //   enabled: true,
-    //   buttons: [
-    //     {
-    //       type: "day",
-    //       count: 7,
-    //       text: "7d",
-    //     },
-    //     {
-    //       type: "day",
-    //       count: 15,
-    //       text: "15d",
-    //     },
-    //     {
-    //       type: "month",
-    //       count: 1,
-    //       text: "1m",
-    //     },
-    //     {
-    //       type: "month",
-    //       count: 3,
-    //       text: "3m",
-    //     },
-    //     {
-    //       type: "month",
-    //       count: 6,
-    //       text: "6m",
-    //     },
-    //   ],
-    //   selected: 4,
-    //   inputEnabled: true,
-    // },
-
+    navigator: {
+      xAxis: {
+        categories: categories,
+        labels: {
+          formatter: function () {
+            return categories[this.value];
+          },
+        },
+      },
+    },
     xAxis: {
       categories: categories,
+      labels: {
+        formatter: function () {
+          return categories[this.value];
+        },
+      },
     },
 
     yAxis: [
       {
         title: { text: "Volume" },
-        labels: { align: "left" }, // align text of label from left side
+        labels: { align: "left" },
         min: 0,
-        // offset: 1  // move Volume yAxis out of plot area, need to be dismissed with label align left
+        offset: 1,
       },
       {
         title: { text: "Stock Price" },
