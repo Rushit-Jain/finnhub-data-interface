@@ -10,6 +10,9 @@ function readFormData() {
 
 function onFormSubmit(event) {
   event.preventDefault();
+  showLoader(true);
+  showContentDiv(false);
+  showNoDataDiv(false);
   let formData = readFormData();
   fetchCompanyData(formData);
   console.log(dataStore.data);
@@ -19,12 +22,18 @@ function onFormReset(event) {
   event.preventDefault();
   showContentDiv(false);
   showNoDataDiv(false);
+  showLoader(false);
   get("form").reset();
 }
 
 function showNoDataDiv(isDisplayed) {
   if (isDisplayed) get("div-nodata").style.display = "block";
   else get("div-nodata").style.display = "none";
+}
+
+function showLoader(isDisplayed) {
+  if (isDisplayed) get("div-loader").style.display = "block";
+  else get("div-loader").style.display = "none";
 }
 
 function showContentDiv(isDisplayed) {
@@ -55,6 +64,7 @@ function renderCompanyNews() {
   get("tab4").innerHTML = html;
   showNoDataDiv(false);
   showContentDiv(true);
+  showLoader(false);
 }
 
 function renderCompanyInfo() {
@@ -62,6 +72,7 @@ function renderCompanyInfo() {
   if (companyInfo.name.length === 0) {
     showNoDataDiv(true);
     showContentDiv(false);
+    showLoader(false);
     return;
   }
   let html = `
