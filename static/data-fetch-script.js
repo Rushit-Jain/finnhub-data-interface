@@ -3,6 +3,7 @@ function fetchCompanyData(params) {
     .get(baseURL + "/company-info", { params })
     .then((response) => {
       dataStore.set("companyInfo", response.data);
+      fetchStockData(params);
       renderCompanyInfo();
     })
     .catch((error) => console.log(error));
@@ -13,6 +14,7 @@ function fetchStockData(params) {
     .get(baseURL + "/stock-summary", { params })
     .then((response) => {
       dataStore.set("stockSummary", response.data);
+      fetchChartData(params);
       renderStockSummary();
     })
     .catch((error) => console.log(error));
@@ -34,6 +36,7 @@ function fetchChartData(params) {
     .then((response) => {
       dataStore.set("chartData", response.data);
       let dataSets = processData();
+      fetchCompanyNews(params);
       renderChart(dataSets);
     })
     .catch((error) => console.log(error));

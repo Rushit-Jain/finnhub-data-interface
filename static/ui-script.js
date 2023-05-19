@@ -12,15 +12,27 @@ function onFormSubmit(event) {
   event.preventDefault();
   let formData = readFormData();
   fetchCompanyData(formData);
-  fetchStockData(formData);
-  fetchCompanyNews(formData);
-  fetchChartData(formData);
   console.log(dataStore.data);
 }
 
 function onFormReset(event) {
   event.preventDefault();
+  showContentDiv(false);
+  showNoDataDiv(false);
   get("form").reset();
+}
+
+function showNoDataDiv(isDisplayed) {
+  if (isDisplayed) get("div-nodata").style.display = "block";
+  else get("div-nodata").style.display = "none";
+}
+
+function showContentDiv(isDisplayed) {
+  if (isDisplayed) {
+    get("div-tabs").style.display = "block";
+  } else {
+    get("div-tabs").style.display = "none";
+  }
 }
 
 function renderCompanyNews() {
@@ -41,13 +53,20 @@ function renderCompanyNews() {
     `;
   });
   get("tab4").innerHTML = html;
+  showNoDataDiv(false);
+  showContentDiv(true);
 }
 
 function renderCompanyInfo() {
   let companyInfo = dataStore.get("companyInfo");
+  if (companyInfo.name.length === 0) {
+    showNoDataDiv(true);
+    showContentDiv(false);
+    return;
+  }
   let html = `
     <div class="row align-items-center justify-content-center">
-      <img src="${companyInfo.logo}" height="200px" width="200px" alt="company-logo" />
+      <img src="${companyInfo.logo}" height="200px" width="200px" style="margin-bottom: 10px;" alt="company-logo" />
     </div>
     <div class="row align-items-center justify-content-center">
       <div class="col-12 col-md-6">
