@@ -80,3 +80,7 @@ exports.getCompanyNews = (req, res, next) => {
     })
     .catch((error) => console.log(error));
 };
+
+exports.getIndexPage = (req, res, next) => {
+  res.render("index");
+};
