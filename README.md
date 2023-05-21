@@ -2,10 +2,10 @@
 ### This is a web application that allows you search for stock-related data for a company. All you need to know is the company's stock ticker symbol!
 
 ## Technologies Used
-API: Finnhub Stock API\
-Front-end: HTML, CSS, Bootstrap, Highcharts, Vanilla JavaScript\
-Back-end: Node.js, Express.js, EJS, Jest\
-Deployment Platform: Google Cloud Platform (App Engine)
+**API**: Finnhub Stock API\
+**Front-end**: HTML, CSS, Bootstrap, Highcharts, Vanilla JavaScript\
+**Back-end**: Node.js, Express.js, EJS, Jest\
+**Deployment Platform**: Google Cloud Platform (App Engine)
 
 ## Demonstration
 The application has been hosted on Google Cloud Platform and can be viewed here: ***[Finnhub Stock Interface](https://finnhub-stock-interface.wl.r.appspot.com)***
